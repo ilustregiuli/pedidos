@@ -28,19 +28,19 @@ public class Program {
 		int itensInOrder;
 		
 		System.out.println("Enter cliente data: ");
-		System.out.printf("Name: ");
+		System.out.print("Name: ");
 		name = sc.nextLine();
-		System.out.printf("Email: ");
-		email = sc.nextLine();
-		System.out.printf("Birth Date: ");
-		birthDate = sc.nextLine();
+		System.out.print("Email: ");
+		email = sc.next();
+		System.out.print("Birth Date: ");
+		birthDate = sc.next();
 		
 		Date birth = sdfBirth.parse(birthDate);
 		Client client = new Client(name, email, birth);
 		
 		System.out.println("Enter order data: ");
-		System.out.printf("Status: ");
-		status = sc.nextLine();
+		System.out.print("Status: ");
+		status = sc.next();
 		
 		// create a Order and Order List
 		Order order = new Order();
@@ -49,7 +49,8 @@ public class Program {
 		for(int i = 1; i <= itensInOrder; i++) {
 			//Product data
 			System.out.println("Enter #" + i + " item data: ");
-			System.out.printf("Product name: ");
+			System.out.print("Product name: ");
+			sc.nextLine();
 			String nameProduct = sc.nextLine();
 			System.out.println("Product price: ");
 			Double price = sc.nextDouble();
