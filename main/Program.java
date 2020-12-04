@@ -10,6 +10,7 @@ import entities.Client;
 import entities.Order;
 import entities.OrderItem;
 import entities.Product;
+import enums.OrderStatus;
 
 public class Program {
 
@@ -24,7 +25,6 @@ public class Program {
 		String email;
 		String birthDate;
 		// order data
-		String status;
 		int itensInOrder;
 		
 		System.out.println("Enter cliente data: ");
@@ -40,10 +40,12 @@ public class Program {
 		
 		System.out.println("Enter order data: ");
 		System.out.print("Status: ");
-		status = sc.next();
+		OrderStatus status = OrderStatus.valueOf(sc.next());
+		
 		
 		// create a Order and Order List
 		Order order = new Order();
+		order.setOrderStatus(status);
 		System.out.printf("How many items to this order?");
 		itensInOrder = sc.nextInt();
 		for(int i = 1; i <= itensInOrder; i++) {
@@ -60,11 +62,14 @@ public class Program {
 			OrderItem ordItem = new OrderItem(qntd,price);
 			ordItem.getProduct().setName(nameProduct);	
 			ordItem.getProduct().setPrice(price);
+			order.addItem(ordItem);
 		}
 	
+		System.out.println("***************************************");
+		
 		System.out.println("ORDER SUMMARY: ");
 		System.out.printf("Order moment: "); 
-		System.out.println(sdf.format(order.geMoment()));
+		System.out.println(sdf.format(order.getMoment()));
 		System.out.printf("Order status: "); 
 		System.out.println(order.getOrderStatus());
 		System.out.printf("Client: ");

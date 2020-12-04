@@ -12,10 +12,11 @@ public class Order {
 	private Date moment;
 	private OrderStatus status;
 	
+	
 	List<OrderItem> item = new ArrayList<>();
 	
 	public Order() {
-		Date moment = new Date();
+		this.moment = new Date();
 	}
 	
 	public Order(Date moment, OrderStatus status) {
@@ -27,12 +28,16 @@ public class Order {
 		return item;
 	}
 
-	public Date geMoment() {
+	public Date getMoment() {
 		return this.moment;
 	}
 	
 	public OrderStatus getOrderStatus() {
 		return this.status;
+	}
+	
+	public void setOrderStatus(OrderStatus s) {
+		this.status = s;
 	}
 	
 	public void addItem(OrderItem item) {
